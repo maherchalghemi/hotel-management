@@ -1,0 +1,166 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+				http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+				http://www.springframework.org/schema/tx 
+		        http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+		        http://www.springframework.org/schema/context 
+		        http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+
+    <!-- Beans Declaration --> 
+    <bean id="Hotel" class="Model.Hotel"/>
+     
+      
+        <bean id="HotelService" class="Service.HotelService">
+        <property name="hotelDAO" ref="HotelDAO" />
+    </bean>
+    
+     <bean id="Prix" class="Model.Prix"/>
+     
+         
+        <bean id="PrixService" class="Service.PrixService">
+        <property name="prixDAO" ref="PrixDAO" />
+    </bean>
+    
+    <bean id="Categories" class="Model.Categories"/>
+     
+         
+        <bean id="CategoriesService" class="Service.CategoriesService">
+        <property name="categoriesDAO" ref="CategoriesDAO" />
+    </bean>
+    
+    <bean id="Chambres" class="Model.Chambres"/>
+     
+         
+        <bean id="ChambresService" class="Service.ChambresService">
+        <property name="chambresDAO" ref="ChambresDAO" />
+    </bean>
+    
+     <bean id="Client" class="Model.Client"/>
+     
+         
+        <bean id="ClientService" class="Service.ClientService">
+        <property name="clientDAO" ref="ClientDAO" />
+    </bean>
+   
+	<bean id="Facture" class="Model.Facture"/>
+     
+         
+        <bean id="FactureService" class="Service.FactureService">
+        <property name="factureDAO" ref="FactureDAO" />
+    </bean>
+    
+   <bean id="Reservation" class="Model.Reservation"/>
+     
+         
+        <bean id="ReservationService" class="Service.ReservationService">
+        <property name="reservationDAO" ref="ReservationDAO" />
+    </bean>
+	
+	<bean id="Users" class="Model.Users"/>
+     
+         
+        <bean id="UsersService" class="Service.UsersService">
+        <property name="usersDAO" ref="UsersDAO" />
+    </bean>
+    
+    <bean id="RoleUsers" class="Model.RoleUsers"/>
+     
+         
+        <bean id="RoleUsersService" class="Service.RoleUsersService">
+        <property name="roleUsersDAO" ref="RoleUsersDAO" />
+    </bean>
+    
+    
+    <bean id="Saison" class="Model.Saison"/>
+     
+         
+        <bean id="SaisonService" class="Service.SaisonService">
+        <property name="saisonDAO" ref="SaisonDAO" />
+    </bean>
+    
+	
+    <!-- DAO Declaration -->
+    <bean id="HotelDAO" class="DAO.HotelDAO">
+        <property name="sessionFactory" ref="SessionFactory" />
+    </bean>
+    
+    <bean id="PrixDAO" class="DAO.PrixDAO">
+        <property name="sessionFactory" ref="SessionFactory" />
+    </bean>
+    <bean id="CategoriesDAO" class="DAO.CategoriesDAO">
+        <property name="sessionFactory" ref="SessionFactory" />
+    </bean>
+    
+    <bean id="ChambresDAO" class="DAO.ChambresDAO">
+        <property name="sessionFactory" ref="SessionFactory" />
+    </bean>
+    
+    <bean id="ClientDAO" class="DAO.ClientDAO">
+        <property name="sessionFactory" ref="SessionFactory" />
+    </bean>
+    
+    <bean id="FactureDAO" class="DAO.FactureDAO">
+        <property name="sessionFactory" ref="SessionFactory" />
+    </bean>
+	
+	<bean id="ReservationDAO" class="DAO.ReservationDAO">
+        <property name="sessionFactory" ref="SessionFactory" />
+    </bean>
+
+	<bean id="UsersDAO" class="DAO.UsersDAO">
+        <property name="sessionFactory" ref="SessionFactory" />
+    </bean>
+    <bean id="RoleUsersDAO" class="DAO.RoleUsersDAO">
+        <property name="sessionFactory" ref="SessionFactory" />
+    </bean>
+    
+    <bean id="SaisonDAO" class="DAO.SaisonDAO">
+        <property name="sessionFactory" ref="SessionFactory" />
+    </bean>
+
+    
+    <!-- Data Source Declaration -->
+   <bean id="DataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="com.mysql.jdbc.Driver" />
+        <property name="url" value="jdbc:mysql://127.0.0.1:3306/ghl" />
+        <property name="username" value="root" />
+        <property name="password" value="" />
+    </bean>
+	
+    <!-- Session Factory Declaration -->
+    <bean id="SessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+        <property name="dataSource" ref="DataSource" />
+        <property name="annotatedClasses">
+            <list>
+                <value>Model.Hotel</value>
+                <value>Model.Prix</value>
+                <value>Model.Categories</value>
+                <value>Model.Chambres</value>
+                <value>Model.Client</value>
+                <value>Model.Facture</value>
+                <value>Model.Reservation</value>
+                <value>Model.Users</value>
+                <value>Model.RoleUsers</value>
+                <value>Model.Saison</value>
+            </list>
+        </property>
+        <property name="hibernateProperties">
+            <props>
+                <prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+                <prop key="hibernate.show_sql">true</prop>
+            </props>
+        </property>
+    </bean>
+	
+    
+    <tx:annotation-driven transaction-manager="Manager"/>
+
+    <!-- Transaction Manager is defined -->
+    <bean id="Manager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+        <property name="sessionFactory" ref="SessionFactory"/>
+    </bean>
+  
+</beans>

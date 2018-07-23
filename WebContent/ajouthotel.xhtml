@@ -1,0 +1,200 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<f:view contentType="text/html">
+	<h:head>
+		<f:facet name="first">
+
+			<meta charset="utf-8" />
+			<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+			<meta name="viewport" content="width=device-width, initial-scale=1" />
+			<meta name="description" content="" />
+			<meta name="author" content="" />
+
+			<link rel="shortcut icon" href="images/logo3.jpg"> </link>
+
+			<title>Happy Holidays</title>
+
+			<!-- Bootstrap Core CSS -->
+			<link href="bower_components/bootstrap/dist/css/bootstrap.min.css"
+				rel="stylesheet" />
+
+			<!-- MetisMenu CSS -->
+			<link href="bower_components/metisMenu/dist/metisMenu.min.css"
+				rel="stylesheet" />
+
+			<!-- Custom CSS -->
+			<link href="dist/css/sb-admin-2.css" rel="stylesheet" />
+
+			<!-- Custom Fonts -->
+			<link href="bower_components/font-awesome/css/font-awesome.min.css"
+				rel="stylesheet" type="text/css" />
+			<!-- jQuery -->
+			<script src="bower_components/jquery/dist/jquery.min.js"></script>
+
+			<!-- Bootstrap Core JavaScript -->
+			<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+			<!-- Metis Menu Plugin JavaScript -->
+			<script src="bower_components/metisMenu/dist/metisMenu.min.js"></script>
+
+			<!-- Custom Theme JavaScript -->
+			<script src="dist/js/sb-admin-2.js"></script>
+
+			<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+			<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+			<!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+		</f:facet>
+	</h:head>
+
+	<h:body>
+
+		<div id="wrapper">
+
+		<!-- Navigation -->
+			<nav class="navbar navbar-default navbar-static-top"
+				role="navigation" style="margin-bottom: 0">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse"
+					data-target=".navbar-collapse">
+					<span class="sr-only">Toggle navigation</span> <span
+						class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="index.xhtml"><img src="images/logo3.jpg"/></a>
+				<a class="navbar-brand" href="index.xhtml">Happy Holidays</a>
+			</div>
+			<!-- /.navbar-header -->
+
+			<ul class="nav navbar-top-links navbar-right">
+				<!-- /.dropdown -->
+				<li><h4>
+						<a class="text-success" href="index.xhtml"><h:outputText
+								value="#{userMB.users.nom} #{userMB.users.prenom}" /></a>
+					</h4></li>
+				<li class="dropdown"><a class="dropdown-toggle"
+					data-toggle="dropdown" href="#"> <i class="fa fa-user fa-fw"></i>
+						<i class="fa fa-caret-down"></i>
+				</a>
+					<ul class="dropdown-menu dropdown-user">
+						<li><a href="profil.xhtml"><i class="fa fa-user fa-fw"></i>
+								Profil</a></li>
+						<li><a href="#"><i class="fa fa-th-list fa-fw"></i> Liste Admin</a>
+						</li>
+						<li class="divider"></li>
+						<li><a href="login.xhtml?status=logout"><i class="fa fa-sign-out fa-fw"></i>
+								Déconnexion</a></li>
+					</ul> <!-- /.dropdown-user --></li>
+				<!-- /.dropdown -->
+			</ul>
+			<!-- /.navbar-top-links -->
+
+			<div class="navbar-default sidebar" role="navigation">
+				<div class="sidebar-nav navbar-collapse">
+					<ul class="nav" id="side-menu">
+
+						<li><a href="index.xhtml"><i class="fa fa-dashboard fa-fw"></i>
+								Tableau de bord</a></li>
+						<li><a href="listhotel.xhtml"><i class="glyphicon glyphicon-cutlery"></i>
+								Liste des hôtels</a></li>
+						<li><a href="listclient.xhtml"><i class="glyphicon glyphicon-user"></i>
+								Liste des clients</a></li>
+						<li><a href="listresev.xhtml"><i class="glyphicon glyphicon-th-list"></i>
+								Liste des reservations</a></li>
+					</ul>
+				</div>
+			</div>
+			</nav>
+
+			<!-- Page Content -->
+			<div id="page-wrapper">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-lg-12">
+							<h1 class="page-header text-primary">Ajouter un hôtel</h1>
+						</div>
+
+
+
+<h:form>
+<p:growl />
+			<h:panelGrid columns="1" id="panel">
+
+				<h:outputLabel value="Nom hotel:" for="nom" />
+				<h:inputText id="nom" value="#{hotelMB.hotel.nomhotel}" styleClass="form-control" p:placeholder="Entrer le nom d'hôtel" title="Nom" requiredMessage="Le champ nom est vide !!" required="true"/>
+				<p:message for="nom" />
+				<br></br>
+				<h:panelGrid columns="1">
+					<h:outputLabel value="Ville:" for="ville" />
+					<p:selectOneMenu id="console1" value="#{hotelMB.hotel.ville}"
+						style="width:125px;margin-left: 10px;"
+						requiredMessage="Le champ ville est vide !!" required="true">
+						<f:selectItem itemLabel="Choisir une ville" itemValue="" />
+
+						<f:selectItem itemLabel="Bizerte" itemValue="Bizerte" />
+						<f:selectItem itemLabel="Djerba" itemValue="Djerba" />
+						<f:selectItem itemLabel="Hammamet" itemValue="Hammamet" />
+						<f:selectItem itemLabel="Monastir" itemValue="Monastir" />
+						<f:selectItem itemLabel="Djerba" itemValue="Djerba" />
+						<f:selectItem itemLabel="Sousse" itemValue="Sousse" />
+						<f:selectItem itemLabel="Tabarka" itemValue="Tabarka" />
+						<f:selectItem itemLabel="Tunis" itemValue="Tunis" />
+						<f:selectItem itemLabel="Touzeur" itemValue="Touzeur" />
+						<f:selectItem itemLabel="Zarzis" itemValue="Zarzis" />
+
+					</p:selectOneMenu><br></br>
+					<p:message for="console1" />
+
+					<h:outputLabel value="Nombre d'étoile:" for="nbre" />
+					<p:selectOneMenu id="console2" value="#{hotelMB.hotel.nbretoile}"
+						style="width:125px;margin-left: 10px;"
+						requiredMessage="Le champ nobre d'étoile est vide !!"
+						required="true">
+						<f:selectItem itemLabel="Etoile" itemValue="" />
+
+						<f:selectItem itemLabel="3" itemValue="3" />
+						<f:selectItem itemLabel="4" itemValue="4" />
+						<f:selectItem itemLabel="5" itemValue="5" />
+
+
+					</p:selectOneMenu><br></br>
+					<p:message for="console2" />
+				</h:panelGrid>
+
+
+
+			</h:panelGrid>
+			 <br></br>
+                                    <p:commandLink  styleClass="btn btn-primary" action="#{hotelMB.addHotel()}" ajax="false"><i class="glyphicon glyphicon-plus-sign" ></i>  Ajouter</p:commandLink>
+                                </h:form>
+		
+
+
+						
+
+
+
+					</div>
+					<!-- /.row -->
+				</div>
+				<!-- /.container-fluid -->
+			</div>
+			<!-- /#page-wrapper -->
+
+		</div>
+		<!-- /#wrapper -->
+
+
+	</h:body>
+
+</f:view>
+
+</html>

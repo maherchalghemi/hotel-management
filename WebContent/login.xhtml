@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:c="http://java.sun.com/jstl/core">
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="" />
+<meta name="author" content="" />
+<link rel="shortcut icon" href="images/logo3.jpg"></link>
+
+<title>Happy Holidays</title>
+
+<!-- Bootstrap Core CSS -->
+<link href="bower_components/bootstrap/dist/css/bootstrap.min.css"
+	rel="stylesheet" />
+
+<!-- MetisMenu CSS -->
+<link href="bower_components/metisMenu/dist/metisMenu.min.css"
+	rel="stylesheet" />
+
+<!-- Custom CSS -->
+<link href="dist/css/sb-admin-2.css" rel="stylesheet" />
+
+<!-- Custom Fonts -->
+<link href="bower_components/font-awesome/css/font-awesome.min.css"
+	rel="stylesheet" type="text/css" />
+
+<!-- jQuery -->
+<script src="bower_components/jquery/dist/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+<!-- Metis Menu Plugin JavaScript -->
+<script src="bower_components/metisMenu/dist/metisMenu.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="dist/js/sb-admin-2.js"></script>
+
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+		
+    <![endif]-->
+
+</head>
+
+<body>
+
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6 col-md-offset-3">
+				<div class="login-panel panel panel-default">
+					<div class="panel-heading">
+						<div class="text-primary">
+							<h3 class="panel-title">
+								<img src="images/logo3.jpg" /> Se connecter
+							</h3>
+						</div>
+					</div>
+					<div class="panel-body">
+						<form role="form" method="post" action="j_spring_security_check">
+							<fieldset>
+								<div class="form-group input-group">
+
+									<span class="input-group-addon" id="basic-addon1"><span
+										class="glyphicon glyphicon-user"></span></span> <input
+										class="form-control" placeholder="Login" name="j_username"
+										type="text" />
+								</div>
+								<div class="form-group input-group">
+
+									<span class="input-group-addon" id="basic-addon1"><span
+										class="glyphicon glyphicon-star"></span></span> <input
+										class="form-control" placeholder="Mot de passe"
+										name="j_password" type="password" value="" />
+								</div>
+								<br></br>
+								<button type="reset" class="btn btn-success">
+									<span class="glyphicon glyphicon-arrow-left"></span> Annuler
+								</button>
+								<button type="submit" class="btn btn-primary">
+									<span class="glyphicon glyphicon-lock"></span> Se connecter
+								</button>
+							</fieldset>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<c:if test="${param.status=='error'}">
+		<label style="color: red">Invalid username or password!!</label>
+	</c:if>
+	<c:if test="${param.status=='logout'}">
+		<label style="color: green">Logged out successfully!</label>
+	</c:if>
+
+</body>
+
+</html>
+
